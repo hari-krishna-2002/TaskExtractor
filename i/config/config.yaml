@@ -1,0 +1,42 @@
+# ML Task Extractor Configuration
+
+models:
+  spacy_model: "en_core_web_sm"
+  transformer_model: "microsoft/DialoGPT-medium"
+  sentence_transformer: "all-MiniLM-L6-v2"
+
+nlp:
+  confidence_threshold: 0.7
+  max_sentence_length: 512
+  context_window_size: 3
+
+task_extraction:
+  min_task_confidence: 0.6
+  max_tasks_per_sentence: 3
+  enable_coreference_resolution: true
+  enable_context_analysis: true
+
+date_parsing:
+  prefer_future_dates: true
+  timezone: "UTC"
+  default_time: "09:00"
+
+priority_weights:
+  urgent_keywords: 2.0
+  deadline_proximity: 1.5
+  speaker_authority: 1.3
+
+categories:
+  work: ["project", "report", "presentation", "meeting", "client", "business", "deadline"]
+  personal: ["doctor", "dentist", "family", "friend", "home", "car", "personal"]
+  administrative: ["schedule", "book", "arrange", "organize", "coordinate", "confirm"]
+  technical: ["develop", "code", "test", "deploy", "debug", "review", "implement"]
+
+logging:
+  level: "INFO"
+  format: "{time:YYYY-MM-DD HH:mm:ss} | {level} | {name}:{function}:{line} | {message}"
+
+api:
+  host: "0.0.0.0"
+  port: 8000
+  enable_cors: true
